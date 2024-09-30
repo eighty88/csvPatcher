@@ -70,6 +70,7 @@ class Patcher {
 
         val result = lines.filter { it.startsWith("field_") || it.startsWith("func_") || it.startsWith("p_") }
             .map { line -> line.split(",") }
+            .filter { lineArr -> lineArr[2].toInt() == 0 }
             .map { lineArr -> lineArr[0] to lineArr[1] }.toMap()
 
         return result
