@@ -69,8 +69,8 @@ class Patcher {
         val lines = file.readLines(StandardCharsets.UTF_8)
 
         val result = lines.filter { it.startsWith("field_") || it.startsWith("func_") || it.startsWith("p_") }
+            .filter { it.contains(",0,") }
             .map { line -> line.split(",") }
-            .filter { lineArr -> lineArr[2].toInt() == 0 }
             .map { lineArr -> lineArr[0] to lineArr[1] }.toMap()
 
         return result
